@@ -1,5 +1,4 @@
-﻿using AnnatureLib.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +8,14 @@ namespace AnnatureLib
 {
     class Accounts
     {
+        public string AuthId { get; set; }
+        public string AuthKey { get; set; }
+        public string BaseUrl { get; set; }
+
+        public Essentials essen;
         public string getList()
         {
-            Headers headers = new Headers();
-            Essentials essen = new Essentials();
-
-            string responseString = essen.sendRequest("GET", headers.BaseUrl + "/v1/accounts");
+            string responseString = essen.sendRequest("GET", AuthId, AuthKey, BaseUrl + "/v1/accounts");
             
             return responseString;
         }

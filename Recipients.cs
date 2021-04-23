@@ -1,5 +1,4 @@
-﻿using AnnatureLib.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +8,14 @@ namespace AnnatureLib
 {
     class Recipients
     {
+        public string AuthId { get; set; }
+        public string AuthKey { get; set; }
+        public string BaseUrl { get; set; }
+
+        public Essentials essen;
         public string updateRecipient(string id)
         {
-            Headers headers = new Headers();
-            Essentials essen = new Essentials();
-
-            string responseString = essen.sendRequest("PUT", headers.BaseUrl + "/v1/recipients/" + id);
+            string responseString = essen.sendRequest("PUT", AuthId, AuthKey, BaseUrl + "/v1/recipients/" + id);
 
             return responseString;
         }

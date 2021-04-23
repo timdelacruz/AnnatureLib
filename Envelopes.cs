@@ -1,5 +1,4 @@
-﻿using AnnatureLib.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,34 +8,38 @@ namespace AnnatureLib
 {
     class Envelopes
     {
+        public string AuthId { get; set; }
+        public string AuthKey { get; set; }
+        public string BaseUrl { get; set; }
+
+        public Essentials essen;
         public string getList()
         {
-            Headers headers = new Headers();
-            Essentials essen = new Essentials();
-
-            string responseString = essen.sendRequest("GET", headers.BaseUrl + "/v1/envelopes");
+            string responseString = essen.sendRequest("GET", AuthId, AuthKey, BaseUrl + "/v1/envelopes");
 
             return responseString;
         }
 
         public string getEnvelope(string id)
         {
-            Headers headers = new Headers();
-            Essentials essen = new Essentials();
-
-            string responseString = essen.sendRequest("GET", headers.BaseUrl + "/v1/envelopes/" + id);
+            string responseString = essen.sendRequest("GET", AuthId, AuthKey, BaseUrl + "/v1/envelopes/" + id);
 
             return responseString;
         }
 
         public string voidEnvelope(string id)
         {
-            Headers headers = new Headers();
-            Essentials essen = new Essentials();
-
-            string responseString = essen.sendRequest("POST", headers.BaseUrl + "/v1/envelopes/" + id + "/void");
+            string responseString = essen.sendRequest("POST", AuthId, AuthKey, BaseUrl + "/v1/envelopes/" + id + "/void");
 
             return responseString;
         }
+
+        public string createEnvelope(string body)
+        {
+            string responseString = essen.sendRequest("POST", AuthId, AuthKey, BaseUrl + "/v1/envelopes/", body);
+
+            return responseString;
+        }
+
     }
 }
