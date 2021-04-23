@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnnatureLib
 {
-    class Envelopes
+    public class Envelopes
     {
         public string AuthId { get; set; }
         public string AuthKey { get; set; }
