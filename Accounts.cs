@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace AnnatureLib
 {
-    class Accounts
+    public class Accounts
     {
         public string AuthId { get; set; }
         public string AuthKey { get; set; }
         public string BaseUrl { get; set; }
 
-        public Essentials essen;
         public string getList()
         {
+            Essentials essen = new Essentials();
             string responseString = essen.sendRequest("GET", AuthId, AuthKey, BaseUrl + "/v1/accounts");
             
             return responseString;

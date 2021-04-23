@@ -12,9 +12,9 @@ namespace AnnatureLib
         public string AuthKey { get; set; }
         public string BaseUrl { get; set; }
 
-        public Essentials essen;
         public string updateRecipient(string id)
         {
+            Essentials essen = new Essentials();
             string responseString = essen.sendRequest("PUT", AuthId, AuthKey, BaseUrl + "/v1/recipients/" + id);
 
             return responseString;

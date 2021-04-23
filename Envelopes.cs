@@ -12,9 +12,9 @@ namespace AnnatureLib
         public string AuthKey { get; set; }
         public string BaseUrl { get; set; }
 
-        public Essentials essen;
         public string getList()
         {
+            Essentials essen = new Essentials();
             string responseString = essen.sendRequest("GET", AuthId, AuthKey, BaseUrl + "/v1/envelopes");
 
             return responseString;
@@ -22,6 +22,7 @@ namespace AnnatureLib
 
         public string getEnvelope(string id)
         {
+            Essentials essen = new Essentials();
             string responseString = essen.sendRequest("GET", AuthId, AuthKey, BaseUrl + "/v1/envelopes/" + id);
 
             return responseString;
@@ -29,6 +30,7 @@ namespace AnnatureLib
 
         public string voidEnvelope(string id)
         {
+            Essentials essen = new Essentials();
             string responseString = essen.sendRequest("POST", AuthId, AuthKey, BaseUrl + "/v1/envelopes/" + id + "/void");
 
             return responseString;
@@ -36,6 +38,7 @@ namespace AnnatureLib
 
         public string createEnvelope(string body)
         {
+            Essentials essen = new Essentials();
             string responseString = essen.sendRequest("POST", AuthId, AuthKey, BaseUrl + "/v1/envelopes/", body);
 
             return responseString;
